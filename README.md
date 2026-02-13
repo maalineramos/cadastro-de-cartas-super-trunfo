@@ -1,80 +1,80 @@
-# Desafio Super Trunfo - Países - Cadastro das Cartas
+# Projeto: Cadastro e Comparação de Cartas (Super Trunfo)
 
-Bem-vindo ao desafio "Super Trunfo - Países"! No jogo Super Trunfo, os jogadores comparam as propriedades das cartas para determinar a mais forte. O tema deste Super Trunfo é "Países," onde você comparará as propriedades das cidades.
+Este projeto foi desenvolvido como atividade do curso de **Análise e Desenvolvimento de Sistemas (ADS)** e marcou o meu **primeiro contato com linguagem C e com programação no geral**.
 
-A empresa MateCheck contratou você para desenvolver a parte inicial do jogo, que consiste no cadastro das cartas.
+A proposta do exercício foi construir, no terminal, uma versão inicial de um jogo no estilo **Super Trunfo**, com foco em praticar fundamentos de programação.
 
-O desafio está dividido em três níveis: Novato, Aventureiro e Mestre, com cada nível adicionando mais complexidade ao anterior. Você deve escolher qual desafio quer realizar.
+## 🎯 Intuito do exercício no curso
 
-### 🚨 Atenção: 
-O nível Novato do desafio é focado apenas no cadastro das cartas, utilizando as funções scanf para ler os dados e printf para exibi-los.
+O objetivo da atividade não era criar um jogo completo com interface gráfica, mas sim treinar a base da lógica de programação usando C, especialmente:
 
-## 🎮 Nível Novato
+- entrada e saída de dados com `scanf`, `fgets` e `printf`;
+- criação e uso de `struct` para organizar dados;
+- funções para separar responsabilidades do código;
+- laços de repetição e menus interativos;
+- estruturas condicionais para tomada de decisão;
+- cálculos com dados numéricos;
+- comparação de valores para definir vencedores.
 
-No nível Novato, você iniciará criando o sistema básico do jogo Super Trunfo com o tema "Países". As cartas serão divididas por estados, cada um com quatro cidades. 
+Em resumo, foi um exercício pensado para ensinar como transformar regras de um problema real em código executável.
 
-Cada país será dividido em oito estados, identificados pelas letras de A a H. Cada estado terá quatro cidades, numeradas de 1 a 4. A combinação da letra do estado e o número da cidade define o código da carta (por exemplo, A01, A02, B01, B02).
+## 🧠 O que foi implementado no programa
 
-### 🚩 Objetivo:
-- Criar cartas representando cidades, contendo as seguintes propriedades:
-  - **População**
-  - **Área**
-  - **PIB**
-  - **Número de pontos turísticos**
-  
-### ⚙️ Funcionalidades do Sistema:
-- O sistema permitirá ao usuário cadastrar cartas de cidades, inserindo manualmente os dados via terminal de comando.
-- Após o cadastro, o sistema exibirá os dados de cada cidade de forma clara e organizada.
+O sistema foi evoluído para além do cadastro básico e hoje executa as etapas abaixo:
 
-### 📥 Entrada e 📤 Saída de Dados:
-- O usuário insere os dados de cada carta interativamente.
-- Após o cadastro, os dados são exibidos com todas as propriedades da cidade, uma por linha.
+### 1) Cadastro de duas cartas
+Para cada carta, o programa solicita:
 
----
+- estado;
+- cidade;
+- quantidade de pontos turísticos;
+- população;
+- área da cidade (km²);
+- PIB.
 
-## 🛡️ Nível Aventureiro
+### 2) Cálculos automáticos
+Após o cadastro, o programa calcula:
 
-No nível Aventureiro, você expandirá o sistema para incluir propriedades calculadas, permitindo uma análise mais detalhada das cartas.
+- **densidade populacional** = população / área;
+- **PIB per capita** = PIB / população;
+- **super poder** = soma dos atributos numéricos da carta.
 
-### 🆕 Diferença em relação ao Nível Novato:
-- **Novas Propriedades Calculadas:**
-  - **Densidade Populacional:** População dividida pela área da cidade.
-  - **PIB per Capita:** PIB total dividido pela população.
+Também há validação simples para evitar divisão por zero.
 
-### ⚙️ Funcionalidades do Sistema:
-- O sistema agora calculará automaticamente a Densidade Populacional e o PIB per Capita com base nos dados inseridos.
-- Essas novas propriedades serão adicionadas às informações exibidas para cada cidade.
+### 3) Exibição organizada dos dados
+Os dados de cada carta são mostrados no terminal com formatação, incluindo os valores calculados.
 
-### 📥 Entrada e 📤 Saída de Dados:
-- O usuário continua inserindo os dados de cada carta interativamente.
-- O sistema exibirá os dados, incluindo as novas propriedades calculadas, de forma clara e organizada.
+### 4) Menu de comparação entre cartas
+Depois de cadastrar as cartas, o usuário pode comparar:
 
----
+1. Super Poder;
+2. Densidade Populacional;
+3. Pontos Turísticos;
+4. Área;
+5. PIB.
 
-## 🏆 Nível Mestre
+Regras da comparação:
 
-No nível Mestre, você implementará comparações entre as cartas, utilizando operadores relacionais e manipulando grandes números com precisão.
+- na **densidade populacional**, vence o **menor valor**;
+- nos demais critérios, vence o **maior valor**;
+- se os valores forem iguais, ocorre empate.
 
-### 🆕 Diferença em relação ao Nível Aventureiro:
-- **Comparação de Cartas:**
-  - O sistema permitirá ao usuário comparar duas cartas com base nas propriedades inseridas e calculadas.
-  - Cada carta terá um "Super Poder", que é a soma de todas as propriedades.
-  
-### ⚙️ Funcionalidades do Sistema:
-- O sistema utilizará operadores relacionais para determinar a carta vencedora com base nas propriedades comparadas.
-- A comparação considerará:
-  - **Densidade Populacional:** Vence a carta com menor valor.
-  - **Outras Propriedades:** Vence a carta com maior valor.
-- O resultado das comparações será exibido claramente para cada propriedade.
+## 🛠️ Conceitos praticados com este projeto
 
-### 📥 Entrada e 📤 Saída de Dados:
-- O usuário insere as cartas a serem comparadas.
-- O sistema exibe os resultados das comparações, indicando a carta vencedora para cada propriedade.
+- Definição de estruturas (`struct Carta`);
+- Funções (`cadastrarCarta`, `mostrarCarta`, `compararCartas`, etc.);
+- Manipulação de buffer de entrada (`limparBuffer`);
+- Controle de fluxo com `switch`, `if/else`, `do...while`;
+- Organização do código em blocos reutilizáveis;
+- Construção de menus em aplicações de console.
 
----
+## 📚 Observação pessoal
 
-Ao concluir todos os níveis, você terá criado um sistema incial para o jogo Super Trunfo, com funcionalidades de cadastro, cálculo e comparação de propriedades. 
+Por ser meu primeiro projeto em C, este exercício foi importante para entender, na prática, como programar:
 
-Boa sorte e divirta-se programando!
+- como ler dados do usuário;
+- como armazenar informações de forma estruturada;
+- como aplicar fórmulas;
+- e como usar lógica para comparar resultados.
 
-Equipe de Ensino - MateCheck
+Mais do que o resultado final, o principal ganho foi o aprendizado da base que será usada em projetos maiores no curso.
